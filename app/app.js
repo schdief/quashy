@@ -8,6 +8,7 @@ app.use(express.static(__dirname + "/views/public"))
 //ROUTES
 //index
 app.get("/", (req, res) => res.render("index"))
+app.get("/itsystem/view", (req, res) => res.render("view"))
 
 //SERVER
 //PORT is defined by environment variable or 80

@@ -1,0 +1,170 @@
+<% include partials/header %>
+
+<div class="ui main text container">
+    
+    <h1>COCOS (ICTO-1848)</h1>
+    
+    <div>
+        <h2>Quality Radar (latest)</h2>
+        <canvas id="radarChart"></canvas>   
+
+        <h2>History</h2>
+        <canvas id="lineChart"></canvas>   
+    </div>
+    
+    <div>
+        <h2>Releases</h2>
+        
+        <table class="ui sortable celled table">
+            <thead>
+                <tr>
+                    <th class="sorted ascending">Date</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2018-01-28</td>
+                    <td>1.3.0-20-d97512</td>
+                    <td>
+                        <a href="/itsystem/release/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/itsystem/release/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr> <tr>
+                    <td>2018-01-27</td>
+                    <td>1.2.1-18-dea2512</td>
+                    <td>
+                        <a href="/itsystem/release/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/itsystem/release/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr> <tr>
+                    <td>2018-01-26</td>
+                    <td>1.2.0-15-513dt2</td>
+                    <td>
+                        <a href="/itsystem/release/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/itsystem/release/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a href="/create" class="ui button green"><i class="add square icon"></i></a>
+        
+    </div>
+</div>
+
+        <script>
+            var radarChart = new Chart(document.getElementById("radarChart"), {
+                type: 'radar',
+                data: {
+                    labels: ['Performance Efficiency', 'Security', 'Usability', 'Reliability', 'Functionality', 'Compatbility', 'Portability', 'Maintainability'],
+                    datasets: [{
+                        label:"1.0.0-15-d97512",
+                        data: [80, 60, 44, 12, 82, 100, 40, 32],
+                        fill:true,
+                        backgroundColor:"rgba(255, 215, 0, 0.2)",
+                        borderColor:"rgb(255, 140, 0)",
+                        pointBackgroundColor:"rgb(255, 215, 0)",
+                        pointBorderColor:"#FF8C00",
+                        pointHoverBackgroundColor:"#FF8C00",
+                        pointHoverBorderColor:"rgb(255, 215, 0)"
+                    }]
+                },
+                options: {
+                    title: {
+                        display: false
+                    }
+                }
+            });
+            
+            var lineChart = new Chart(document.getElementById("lineChart"), {
+                type: 'line',
+                data: {
+                    labels: ['1.2.0-15-513dt2','1.2.1-18-dea2512', '1.3.0-20-d97512'],
+                    datasets: [{
+                        label:"Performance Efficiency",
+                        data: [40, 90, 80],
+                        fill: false,
+                        borderColor:"#B03060",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Security",
+                        data: [50, 52, 60],
+                        fill: false,
+                        borderColor:"#FE9A76",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Usability",
+                        data: [93, 32, 44],
+                        fill: false,
+                        borderColor:"#FFD700",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Reliability",
+                        data: [0, 8, 12],
+                        fill: false,
+                        borderColor:"#32CD32",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Functionality",
+                        data: [100, 65, 82],
+                        fill: false,
+                        borderColor:"#016936",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Compatibility",
+                        data: [90, 100, 100],
+                        fill: false,
+                        borderColor:"#008080",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Portability",
+                        data: [50, 55, 60],
+                        fill: false,
+                        borderColor:"#0E6EB8",
+                        backgroundColor:"#FFFFFF"
+                    }, {
+                        label: "Maintainability",
+                        data: [50, 55, 60],
+                        fill: false,
+                        borderColor:"#EE82EE",
+                        backgroundColor:"#FFFFFF"
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display:false,
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Release'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Value'
+                            }
+                        }]
+                    }
+                }
+            });
+
+            $('table').tablesort()
+        </script>
+
+<% include partials/footer %>
