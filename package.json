@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/schdief/quashy#readme",
   "dependencies": {
+    "angular-chart.js": "^1.1.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2"
   }

@@ -1,9 +1,104 @@
 <% include partials/header %>
 
 <div class="ui main text container">
-    <div class="ui top attached segment">
-        <h1 class="ui header">Quashy!</h1>
+    <div>
+        <h1>Overview</h1>
+        <canvas id="overviewChart"></canvas>
+    </div>
+    <div>
+        <h1>List</h1>
+        
+        <table class="ui sortable celled table">
+            <thead>
+                <tr>
+                    <th class="sorted ascending">ICTO</th>
+                    <th>Name</th>
+                    <th>Last Update</th>
+                    <th>Release</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ICTO-1848</td>
+                    <td>COCOS</td>
+                    <td>2018-01-28</td>
+                    <td>1.0.0-15-d97512</td>
+                    <td>
+                        <a href="/view" class="ui button blue"><i class="zoom icon"></i></a>
+                        <a href="/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr><tr>
+                    <td>ICTO-1042</td>
+                    <td>PI</td>
+                    <td>2018-01-31</td>
+                    <td>4.4.2.2-915-eda124</td>
+                    <td>
+                        <a href="/view" class="ui button blue"><i class="zoom icon"></i></a>
+                        <a href="/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr><tr>
+                    <td>ICTO-1405</td>
+                    <td>DHL OFI</td>
+                    <td>2018-01-18</td>
+                    <td>2.0.3-146-133ter</td>
+                    <td>
+                        <a href="/view" class="ui button blue"><i class="zoom icon"></i></a>
+                        <a href="/edit" class="ui button orange"><i class="pencil icon"></i></a>
+                        <a href="/delete" class="ui button red"><i class="trash icon"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a href="/create" class="ui button green"><i class="add square icon"></i></a>
+        
     </div>
 </div>
+
+        <script>
+            var overviewChart = new Chart(document.getElementById("overviewChart"), {
+                type: 'radar',
+                data: {
+                    labels: ['Performance Efficiency', 'Security', 'Usability', 'Reliability', 'Functionality', 'Compatbility', 'Portability', 'Maintainability'],
+                    datasets: [{
+                        label:"PI (ICTO-1042)",
+                        data: [20, 10, 40, 92, 20, 10, 4, 2],
+                        fill:true,
+                        backgroundColor:"rgba(255, 99, 132, 0.2)",
+                        borderColor:"rgb(255, 99, 132)",
+                        pointBackgroundColor:"rgb(255, 99, 132)",
+                        pointBorderColor:"#fff",
+                        pointHoverBackgroundColor:"#fff",
+                        pointHoverBorderColor:"rgb(255, 99, 132)"
+                    }, {
+                        label:"COCOS (ICTO-1848)",
+                        data: [80, 60, 44, 12, 82, 100, 40, 32],
+                        fill:true,
+                        backgroundColor:"rgba(255, 215, 0, 0.2)",
+                        borderColor:"rgb(255, 140, 0)",
+                        pointBackgroundColor:"rgb(255, 215, 0)",
+                        pointBorderColor:"#FF8C00",
+                        pointHoverBackgroundColor:"#FF8C00",
+                        pointHoverBorderColor:"rgb(255, 215, 0)"
+                    }, {
+                        label:"DHL OFI (ICTO-1405)",
+                        data: [60, 10, 74, 92, 62, 30, 80, 92],
+                        fill:true,
+                        backgroundColor:"rgba(54, 162, 235, 0.2)",
+                        borderColor:"rgb(54, 162, 235)",
+                        pointBackgroundColor:"rgb(54, 162, 235)",
+                        pointBorderColor:"#fff",
+                        pointHoverBackgroundColor:"#fff",
+                        pointHoverBorderColor:"rgb(54, 162, 235)"
+                    }]
+                },
+                options: {}
+            });
+            
+            $('table').tablesort()
+        </script>
 
 <% include partials/footer %>
